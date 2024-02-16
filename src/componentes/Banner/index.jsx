@@ -23,7 +23,6 @@ const TituloEstilizado = styled.h1`
     color: #FFFFFF;
     max-width: 300px;
     padding: 0 64px;
-    text-align: left; /* Alinha o texto à esquerda */
 `
 
 const Banner = ({texto, backgroundImage}) => {
