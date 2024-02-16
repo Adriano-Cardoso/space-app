@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from "styled-components"
 
 const FigureEstilizada = styled.figure`
     background-image: ${props => `url(${props.$backgroundImage})`};
@@ -6,15 +6,12 @@ const FigureEstilizada = styled.figure`
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centraliza horizontalmente */
-    height: 328px; /* Aumenta a altura do banner */
-    width: 100%; /* Usa toda a largura disponível */
+    min-height: 328px;
     margin: 0;
     border-radius: 20px;
     max-width: 100%;
-    background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o banner */
-`;
-
+    background-size: cover;
+`
 
 const TituloEstilizado = styled.h1`
     font-weight: 400;

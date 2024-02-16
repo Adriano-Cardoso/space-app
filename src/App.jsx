@@ -4,6 +4,7 @@ import Banner from "./componentes/Banner";
 import BarraLateral from "./componentes/BarraLateral";
 import Cabecalho from "./componentes/Cabecalho";
 import EstilosGlobais from "./componentes/EstilosGlobais";
+import Galeria from "./componentes/Galeria";
 
 const AppContainer = styled.div`
   width: 90%; /* Largura relativa */
@@ -29,7 +30,13 @@ const FundoGradiente = styled.div`
   min-height: 100vh;
 `;
 
-function App() {
+const ConteudoGaleria = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
+
+function App () {
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -37,14 +44,18 @@ function App() {
         <Cabecalho />
         <MainContainer>
           <BarraLateral />
-          <Banner
-            texto="A galeria mais completa de fotos do espaço!"
-            backgroundImage={bannerBackground}
-          />
+                    <ConteudoGaleria>
+            <Banner
+              texto="A galeria mais completa de fotos do espaço!"
+              backgroundImage={bannerBackground}
+            />
+                        <Galeria />
+                    </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
     </FundoGradiente>
-  );
+  )
 }
+
 
 export default App;
