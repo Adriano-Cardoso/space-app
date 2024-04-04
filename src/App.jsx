@@ -1,34 +1,30 @@
-import { styled } from "styled-components";
-import bannerBackground from "./assets/banner.png";
-import Banner from "./componentes/Banner";
-import BarraLateral from "./componentes/BarraLateral";
-import Cabecalho from "./componentes/Cabecalho";
-import EstilosGlobais from "./componentes/EstilosGlobais";
-import Galeria from "./componentes/Galeria";
+import { styled } from "styled-components"
+import bannerBackground from './assets/banner.png'
+import Banner from "./componentes/Banner"
+import BarraLateral from "./componentes/BarraLateral"
+import Cabecalho from "./componentes/Cabecalho"
+import EstilosGlobais from "./componentes/EstilosGlobais"
+import Galeria from "./componentes/Galeria"
+
+import { useState } from "react"
+import fotos from './fotos.json'
+
+const FundoGradiente = styled.div`
+  background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
+  width: 100%;
+  min-height: 100vh;
+`
 
 const AppContainer = styled.div`
-  width: 90%; /* Largura relativa */
-  max-width: 3000px; /* Largura máxima ajustada para telas grandes */
-  margin: 0 auto; /* Centralizar horizontalmente */
-  padding: 0 40px; /* Adiciona um pouco de espaço nas laterais */
-`;
-
+  width: 1440px;
+  margin: 0 auto;
+  max-width: 100%;
+`
 
 const MainContainer = styled.main`
   display: flex;
-  gap: 24;
-`;
-
-const FundoGradiente = styled.div`
-  background: linear-gradient(
-    174.61deg,
-    #041833 4.16%,
-    #04244f 48%,
-    #154580 96.76%
-  );
-  width: 100%;
-  min-height: 100vh;
-`;
+  gap: 24px;
+`
 
 const ConteudoGaleria = styled.section`
   display: flex;
@@ -36,7 +32,10 @@ const ConteudoGaleria = styled.section`
   flex-grow: 1;
 `
 
-function App () {
+const App = () => {
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos)
+  const [fotoSelecionada, setFotoSelecionada] = useState(null)
+  
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -44,18 +43,20 @@ function App () {
         <Cabecalho />
         <MainContainer>
           <BarraLateral />
-                    <ConteudoGaleria>
+          <ConteudoGaleria>
             <Banner
               texto="A galeria mais completa de fotos do espaço!"
               backgroundImage={bannerBackground}
             />
-                        <Galeria />
-                    </ConteudoGaleria>
+            <Galeria 
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)} 
+              fotos={fotosDaGaleria}
+            />
+          </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
     </FundoGradiente>
   )
 }
 
-
-export default App;
+export default App
